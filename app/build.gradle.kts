@@ -1,5 +1,3 @@
-
-
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
@@ -82,7 +80,7 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
 
     implementation(libs.hilt.android)
-    kapt (libs.hilt.android.compiler)
+    kaptTest (libs.hilt.android.compiler)
     implementation(libs.hilt.navigation.compose)
 
     implementation(libs.navigation.compose)
@@ -99,6 +97,10 @@ dependencies {
     implementation(libs.room.ktx)
     kapt(libs.room.compiler)
     implementation(libs.room.paging)
+
+    androidTestImplementation(libs.androidx.arch.core.testing)
+    androidTestImplementation(libs.kotlinx.coroutines.test)
+
 
 
 

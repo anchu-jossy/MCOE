@@ -27,7 +27,6 @@ import com.example.mcoeexercise.navigation.Navigation
 import com.example.mcoeexercise.navigation.Screen
 import com.example.mcoeexercise.navigation.currentRoute
 import com.example.mcoeexercise.navigation.navigationTitle
-import com.example.mcoeexercise.screens.PlanetList
 import com.example.mcoeexercise.ui.theme.MCOEExerciseTheme
 import dagger.hilt.android.AndroidEntryPoint
 

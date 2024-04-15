@@ -18,7 +18,7 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "com.example.mcoeexercise.MainTestRunner"
+        testInstrumentationRunner = "com.example.mcoeexercise.FilmItemViewTest"
         vectorDrawables {
             useSupportLibrary = true
         }
