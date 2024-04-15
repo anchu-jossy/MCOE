@@ -14,8 +14,9 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.createGraph
 import androidx.navigation.navArgument
 import com.example.mcoeexercise.R
-import com.example.mcoeexercise.screens.PlanetDetails
-import com.example.mcoeexercise.screens.PlanetList
+import com.example.mcoeexercise.screens.planet_details.PlanetDetails
+import com.example.mcoeexercise.screens.planetlist.PlanetList
+
 
 @Composable
 fun Navigation(navController: NavHostController, modifier: Modifier)

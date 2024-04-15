@@ -1,4 +1,4 @@
-package com.example.mcoeexercise.screens
+package com.example.mcoeexercise.screens.planetlist
 
 import android.app.Activity
 import androidx.compose.foundation.clickable
@@ -18,8 +18,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -29,31 +27,29 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
-import com.example.mcoeexercise.MainViewModel
 import com.example.mcoeexercise.R
 import com.example.mcoeexercise.component.CircularIndeterminateProgressBar
 import com.example.mcoeexercise.component.NoDataPlaceHolder
+import com.example.mcoeexercise.component.NoInternetView
 import com.example.mcoeexercise.component.TextLabelValue
 import com.example.mcoeexercise.model.Planet
 import com.example.mcoeexercise.navigation.Screen
 import com.example.mcoeexercise.utils.ConnectionState
 import com.example.mcoeexercise.utils.connectivityState
 import com.example.mcoeexercise.utils.getIdFromUrl
-import com.example.mcoeexercise.utils.pagingLoadingState
 
 
 @Composable
 fun PlanetList(navController: NavController) {
     val activity = (LocalContext.current as? Activity)
     val mainViewModel = hiltViewModel<MainViewModel>()
-//    val openDialog = remember { mutableStateOf(false) }
     val planetListFlow: LazyPagingItems<Planet> =
         mainViewModel.planetListFlow.collectAsLazyPagingItems()
     // internet connection
     val connection by connectivityState()
     val isConnected = connection === ConnectionState.Available
     val progressBar =
-        mainViewModel.progressFlow.collectAsState()/*remember { mutableStateOf(false) }*/
+        mainViewModel.progressFlow.collectAsState()
 
     /*
         when (val state = planetLists.loadState.refresh) { //FIRST LOAD
@@ -110,11 +106,7 @@ fun PlanetList(navController: NavController) {
 
 
     if (isConnected.not()) {
-        Snackbar(
-            action = {}, modifier = Modifier.padding(8.dp)
-        ) {
-            Text(text = stringResource(R.string.no_internet))
-        }
+        NoInternetView()
     } else {
         CircularIndeterminateProgressBar(isDisplayed = progressBar.value, 0.1f)
         LaunchedEffect(key1 = 0) {
@@ -156,7 +148,10 @@ fun PlanetItemView(planet: Planet, onClick:() -> Unit) {
         /*onClick = { onClick },*/
         modifier = Modifier.clickable {
             onClick()
-        }
+        },
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surfaceVariant,
+        )
     ) {
         Column(modifier = Modifier.padding(8.dp)) {
             Text(

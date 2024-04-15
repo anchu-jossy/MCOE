@@ -23,7 +23,6 @@ fun TextLabelValue(lbl: String, value: String?) {
                 .fillMaxWidth(0.5f),
             textAlign = TextAlign.Start,
             style = typography.labelSmall,
-            color = Color.Black
         )
         Text(
             text = value ?: "",
@@ -31,7 +30,6 @@ fun TextLabelValue(lbl: String, value: String?) {
                 .fillMaxWidth(),
             textAlign = TextAlign.End,
             style = typography.bodySmall,
-            color = Color.DarkGray
         )
     }
 }

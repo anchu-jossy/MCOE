@@ -1,4 +1,4 @@
-package com.example.mcoeexercise.screens
+package com.example.mcoeexercise.screens.planet_details
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -24,6 +24,9 @@ fun FilmItemView(film: Film, onClick: () -> Unit) {
     Card(
         elevation = CardDefaults.cardElevation(defaultElevation = 5.dp),
         onClick = { onClick },
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surfaceVariant,
+        )
     ) {
         Column(modifier = Modifier.padding(8.dp)) {
             Text(
@@ -41,13 +44,12 @@ fun FilmItemView(film: Film, onClick: () -> Unit) {
                     .fillMaxWidth(),
                 textAlign = TextAlign.Start,
                 style = MaterialTheme.typography.labelSmall,
-                color = Color.Black
+
             )
             Text(
                 text = film.openingCrawl!!, modifier = Modifier.fillMaxWidth(),
-                textAlign = TextAlign.Start,
-                style = MaterialTheme.typography.labelSmall,
-                color = Color.DarkGray,
+                textAlign = TextAlign.Justify,
+                style = MaterialTheme.typography.bodySmall,
                 maxLines = 3,
                 overflow = TextOverflow.Ellipsis
             )

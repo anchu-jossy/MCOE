@@ -17,10 +17,15 @@
     <string name="population">Population</string>
     <string name="residents">Residents</string>
     <string name="films">Films</string>
-    <string name="no_internet">No internet…</string>
+    <string name="no_internet">Oop! looks like there\'s no internet  connection or try again later</string>
 
-    <string name="director">Director</string>
-    <string name="producer">Producer</string>
-    <string name="release_date">Release Date</string>
-    <string name="opening_crawl">Opening Crawl</string>
+    <string name="director">Director : </string>
+    <string name="producer">Producer : </string>
+    <string name="release_date">Release Date : </string>
+    <string name="opening_crawl">Opening Crawl : </string>
+
+    <string name="gender">Gender : </string>
+    <string name="birth_year">Birth Year : </string>
+
+
 </resources>

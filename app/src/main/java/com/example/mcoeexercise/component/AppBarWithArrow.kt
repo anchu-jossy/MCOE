@@ -28,7 +28,7 @@ fun AppBarWithArrow(
         ),
         title = { Text(title) },
         navigationIcon = {
-            IconButton(onClick = { navController.navigateUp() /*  pressOnBack()*/ }) {
+            IconButton(onClick = { pressOnBack() }) {
                 Icon(
                     imageVector = Icons.Filled.ArrowBack,
                     contentDescription = "Back"
