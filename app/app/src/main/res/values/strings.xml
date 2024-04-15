@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">MCOE Exercise</string>
+    <string name="planets_lbl">Planets</string>
+    <string name="planet_details">Planet Detail</string>
+    <string name="no_data_placeholder">No Data Available</string>
+
+
+
+
+    <string name="rotation_period">Rotation Period</string>
+    <string name="orbital_period">Orbital Period</string>
+    <string name="diameter">Diameter</string>
+    <string name="climate">Climate</string>
+    <string name="gravity">Gravity</string>
+    <string name="terrain">Terrain</string>
+    <string name="surface_water">Surface Water</string>
+    <string name="population">Population</string>
+    <string name="residents">Residents</string>
+    <string name="films">Films</string>
+    <string name="no_internet">Oop! looks like there\'s no internet  connection or try again later</string>
+
+    <string name="director">Director : </string>
+    <string name="producer">Producer : </string>
+    <string name="release_date">Release Date : </string>
+    <string name="opening_crawl">Opening Crawl : </string>
+
+    <string name="gender">Gender : </string>
+    <string name="birth_year">Birth Year : </string>
+
+
+</resources>
