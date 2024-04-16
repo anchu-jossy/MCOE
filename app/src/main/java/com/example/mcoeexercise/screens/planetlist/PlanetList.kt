@@ -1,5 +1,7 @@
 package com.example.mcoeexercise.screens.planetlist
 
+// Import necessary modules and libraries
+
 import android.app.Activity
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -12,7 +14,6 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Snackbar
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -38,72 +39,22 @@ import com.example.mcoeexercise.utils.ConnectionState
 import com.example.mcoeexercise.utils.connectivityState
 import com.example.mcoeexercise.utils.getIdFromUrl
 
-
+/**
+ * Composable function to display the list of planets.
+ */
 @Composable
 fun PlanetList(navController: NavController) {
     val activity = (LocalContext.current as? Activity)
     val mainViewModel = hiltViewModel<MainViewModel>()
     val planetListFlow: LazyPagingItems<Planet> =
         mainViewModel.planetListFlow.collectAsLazyPagingItems()
-    // internet connection
+    // Internet connection
     val connection by connectivityState()
     val isConnected = connection === ConnectionState.Available
     val progressBar =
         mainViewModel.progressFlow.collectAsState()
 
-    /*
-        when (val state = planetLists.loadState.refresh) { //FIRST LOAD
-            is LoadState.Error -> {
-                //TODO Error Item
-                //state.error to get error message
-            }
-            is LoadState.Loading -> { // Loading UI
-               *//* item {
-                Column(
-                    modifier = Modifier
-                        .fillParentMaxSize(),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.Center,
-                ) {
-                    Text(
-                        modifier = Modifier
-                            .padding(8.dp),
-                        text = "Refresh Loading"
-                    )
-
-                    CircularProgressIndicator(color = Color.Black)
-                }
-            }*//*
-        }
-        else -> {}
-    }
-
-    when (val state = planetLists.loadState.append) { // Pagination
-        is LoadState.Error -> {
-            //TODO Pagination Error Item
-            //state.error to get error message
-        }
-        is LoadState.Loading -> { // Pagination Loading UI
-            *//*item {
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth(),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.Center,
-                ) {
-                    Text(text = "Pagination Loading")
-
-                    CircularProgressIndicator(color = Color.Black)
-                }
-            }*//*
-        }
-        else -> {
-
-        }
-    }*/
-
     val planetLists = mainViewModel.planetList.value
-
 
     if (isConnected.not()) {
         NoInternetView()
@@ -131,24 +82,17 @@ fun PlanetList(navController: NavController) {
         } else {
             NoDataPlaceHolder()
         }
-
-
-        /* planetListFlow.pagingLoadingState {
-             progressBar.value = it
-         }*/
     }
 }
 
-
+/**
+ * Composable function to display each planet item.
+ */
 @Composable
-fun PlanetItemView(planet: Planet, onClick:() -> Unit) {
-
+fun PlanetItemView(planet: Planet, onClick: () -> Unit) {
     Card(
         elevation = CardDefaults.cardElevation(defaultElevation = 5.dp),
-        /*onClick = { onClick },*/
-        modifier = Modifier.clickable {
-            onClick()
-        },
+        modifier = Modifier.clickable { onClick() },
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surfaceVariant,
         )
@@ -156,8 +100,7 @@ fun PlanetItemView(planet: Planet, onClick:() -> Unit) {
         Column(modifier = Modifier.padding(8.dp)) {
             Text(
                 text = planet.name,
-                modifier = Modifier
-                    .fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth(),
                 textAlign = TextAlign.Center,
                 style = MaterialTheme.typography.titleMedium,
             )
@@ -168,10 +111,6 @@ fun PlanetItemView(planet: Planet, onClick:() -> Unit) {
             TextLabelValue(stringResource(R.string.gravity), planet.gravity)
             TextLabelValue(stringResource(R.string.terrain), planet.terrain)
             TextLabelValue(stringResource(R.string.population), planet.population)
-
         }
     }
-
-
 }
-

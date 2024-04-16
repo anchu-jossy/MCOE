@@ -1,5 +1,7 @@
 package com.example.mcoeexercise.screens.planet_details
 
+// Import necessary modules and libraries
+
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -17,10 +19,14 @@ import com.example.mcoeexercise.R
 import com.example.mcoeexercise.component.TextLabelValue
 import com.example.mcoeexercise.model.People
 
-
+/**
+ * Composable function to display details of a resident (people) on a card.
+ *
+ * @param people The details of the resident.
+ * @param onClick Callback function for click events on the card.
+ */
 @Composable
-fun ResidentItem(people: People, onClick: () -> Unit)
-{
+fun ResidentItem(people: People, onClick: () -> Unit) {
     Card(
         elevation = CardDefaults.cardElevation(defaultElevation = 5.dp),
         onClick = { onClick },
@@ -30,16 +36,13 @@ fun ResidentItem(people: People, onClick: () -> Unit)
     ) {
         Column(modifier = Modifier.padding(8.dp)) {
             Text(
-                text = people.name?:"",
-                modifier = Modifier
-                    .fillMaxWidth(),
+                text = people.name ?: "",
+                modifier = Modifier.fillMaxWidth(),
                 textAlign = TextAlign.Center,
                 style = MaterialTheme.typography.titleMedium,
             )
             TextLabelValue(stringResource(R.string.gender), people.gender)
             TextLabelValue(stringResource(R.string.birth_year), people.birthYear)
-
-
         }
     }
 }
